@@ -1,0 +1,1 @@
+Requires the wasm32-wasip1 target (`rustup target add wasm32-wasip1`).

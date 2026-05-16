@@ -1,0 +1,14 @@
+# Large artifacts
+cyberleague
+cyberleague.jar
+strategies.png
+strategy_icons/
+
+# macOS
+.DS_Store
+
+# Claude
+.claude/
+
+# Rust build output
+target/

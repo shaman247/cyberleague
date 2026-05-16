@@ -1,0 +1,71 @@
+A classic bluffing game where players bid on what dice are showing across all hidden hands, then call each other's bluff. This challenge implements a single round of the original game.
+
+Rules
+Each player rolls 5 dice in secret.
+Players take turns bidding by announcing a face value and a minimum count (e.g. "three 4s" means at least three 4s exist across both players' dice).
+Each new bid must be strictly higher than the last: either a higher quantity (any face), or the same quantity with a higher face.
+On your turn you may instead challenge the previous bid.
+When challenged, all dice are revealed. If the actual count meets or exceeds the bid, the bidder wins. Otherwise the challenger wins.
+1s are "wild": they always count toward the current bid face.
+Technical Notes
+Context (Bot Input) Example
+{
+  "my-id": 1,
+  "my-dice": [
+    3,
+    1,
+    2,
+    2,
+    5
+  ],
+  "history": [
+    {
+      "player-id": 0,
+      "move": {
+        "action": "bid",
+        "quantity": 2,
+        "face": 3
+      }
+    },
+    {
+      "player-id": 1,
+      "move": {
+        "action": "bid",
+        "quantity": 2,
+        "face": 5
+      }
+    },
+    {
+      "player-id": 0,
+      "move": {
+        "action": "bid",
+        "quantity": 3,
+        "face": 4
+      }
+    }
+  ]
+}
+Context Schema
+[:map
+ [:my-id :int]
+ [:my-dice [:vector {:min 5, :max 5} [:int {:min 1, :max 6}]]]
+ [:history
+  [:vector
+   [:map
+    [:player-id :int]
+    [:move
+     [:or
+      [:map
+       [:action [:= "bid"]]
+       [:quantity [:int {:min 1, :max 10}]]
+       [:face [:int {:min 1, :max 6}]]]
+      [:map [:action [:= "challenge"]]]]]]]]]
+Move (Bot Output) Example
+{"action":"bid","quantity":3,"face":4}
+Move Schema
+[:or
+ [:map
+  [:action [:= "bid"]]
+  [:quantity [:int {:min 1, :max 10}]]
+  [:face [:int {:min 1, :max 6}]]] 
+ [:map [:action [:= "challenge"]]]]

@@ -1,0 +1,7 @@
+{:bot/build-artifact "target/wasm32-wasip1/release/bot.wasm"
+ :bot/build-cmd "cargo build --release --target wasm32-wasip1"
+ :bot/env "rust-wasm"
+ :bot/game "goofspiel"
+ :bot/id #uuid "019dfe21-d2ad-7403-94d9-300cb0e719b8"
+ :bot/name "kjp"
+ :bot/run-cmd "cargo run"}

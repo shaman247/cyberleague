@@ -1,0 +1,79 @@
+Rules
+Take three suits from a standard deck. One suit becomes the trophy deck (shuffled face-down); each player takes one of the remaining suits as their hand.
+Each round, flip the top trophy card face-up. Both players simultaneously choose a card from their hand and reveal it.
+The player who played the higher card wins the trophy card (scoring its face value: Ace=1, Jack=11, Queen=12, King=13). If there's a tie, the trophy card is discarded and neither player scores.
+The played cards are removed from both hands, and the next round begins.
+After all 13 rounds, the player with the highest total score wins.
+Technical Notes
+Cards are represented as integers 1–13 (Ace=1, Jack=11, Queen=12, King=13). The trophy deck is shuffled randomly at the start of each match.
+
+Context (Bot Input) Example
+{
+  "your-cards": [
+    7,
+    1,
+    13,
+    6,
+    3,
+    12,
+    2,
+    11,
+    9,
+    10,
+    8
+  ],
+  "their-cards": [
+    1,
+    4,
+    13,
+    6,
+    12,
+    2,
+    11,
+    9,
+    5,
+    10,
+    8
+  ],
+  "trophy-cards": [
+    7,
+    4,
+    13,
+    6,
+    3,
+    12,
+    2,
+    11,
+    9,
+    5
+  ],
+  "current-trophy": 1,
+  "history": [
+    {
+      "you": 4,
+      "them": 3,
+      "trophy": 8
+    },
+    {
+      "you": 5,
+      "them": 7,
+      "trophy": 10
+    }
+  ]
+}
+Context Schema
+[:map
+ [:your-cards [:set [:int {:min 1, :max 13}]]]
+ [:their-cards [:set [:int {:min 1, :max 13}]]]
+ [:trophy-cards [:set [:int {:min 1, :max 13}]]]
+ [:current-trophy [:int {:min 1, :max 13}]]
+ [:history
+  [:vector
+   [:map
+    [:you [:int {:min 1, :max 13}]]
+    [:them [:int {:min 1, :max 13}]]
+    [:trophy [:int {:min 1, :max 13}]]]]]]
+Move (Bot Output) Example
+5
+Move Schema
+[:int {:min 1, :max 13}]

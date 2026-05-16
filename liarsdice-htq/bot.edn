@@ -1,0 +1,7 @@
+{:bot/build-artifact "target/wasm32-wasip1/release/bot.wasm"
+ :bot/build-cmd "cargo build --release --target wasm32-wasip1"
+ :bot/env "rust-wasm"
+ :bot/game "liars-dice"
+ :bot/id #uuid "019e17fd-47a1-70f6-89d3-be026a9da4c8"
+ :bot/name "htq"
+ :bot/run-cmd "cargo run"}
