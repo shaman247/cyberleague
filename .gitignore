@@ -10,5 +10,8 @@ strategy_icons/
 # Claude
 .claude/
 
+# Local config (contains API token)
+cyberleague.conf.edn
+
 # Rust build output
 target/
